@@ -1,0 +1,8 @@
+#https://leetcode.com/problems/tree-node/description/
+select id,
+CASE
+	WHEN p_id is null THEN 'Root'
+  WHEN id in (select p_id from tree) then 'Inner'
+ELSE 'Leaf' 
+END AS type
+from tree
