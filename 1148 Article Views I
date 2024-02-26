@@ -1,0 +1,12 @@
+#https://leetcode.com/problems/article-views-i/description/
+
+select
+distinct(case when author_id = viewer_id 
+then author_id  
+end)
+as id 
+from views
+group by id
+HAVING
+id IS NOT NULL
+order by id asc
