@@ -1,0 +1,17 @@
+# https://leetcode.com/problems/employees-with-missing-information/description/
+
+SELECT e.employee_id
+FROM Employees e
+left JOIN Salaries as s 
+ON e.employee_id = s.employee_id
+where s.salary is null
+
+union 
+
+SELECT s.employee_id
+FROM Salaries s
+left JOIN Employees as e 
+ON e.employee_id = s.employee_id
+where e.name is null
+
+order by employee_id asc
