@@ -1,0 +1,8 @@
+#https://leetcode.com/problems/bank-account-summary-ii/description/
+
+select NAME, balance as BALANCE from
+(select SUM(Transactions.amount) as balance, Users.name from Transactions
+inner join Users
+on Users.account=Transactions.account 
+GROUP BY Transactions.account) as t 
+having BALANCE > 10000;
